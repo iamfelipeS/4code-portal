@@ -1,0 +1,104 @@
+<section class="py-10">
+  <a routerLink="/produtos" class="text-sm text-gray-600 hover:underline">← Voltar</a>
+
+  @if (product) {
+    <div class="mt-4 grid lg:grid-cols-2 gap-8 items-start">
+      <!-- LEFT: Carousel -->
+      <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100">
+          <img
+            [src]="currentImage"
+            [alt]="product.name + ' preview'"
+            class="w-full h-72 sm:h-96 object-cover"
+            loading="lazy"
+          />
+
+          <!-- Controls -->
+          <button
+            type="button"
+            (click)="prev()"
+            class="absolute left-3 top-1/2 -translate-y-1/2 px-3 py-2 rounded-lg bg-white/90 backdrop-blur border border-gray-200 text-sm font-semibold hover:bg-white"
+          >
+            ←
+          </button>
+
+          <button
+            type="button"
+            (click)="next()"
+            class="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-2 rounded-lg bg-white/90 backdrop-blur border border-gray-200 text-sm font-semibold hover:bg-white"
+          >
+            →
+          </button>
+
+          <!-- Counter -->
+          <div class="absolute bottom-3 right-3 text-xs px-2 py-1 rounded-md bg-white/90 backdrop-blur border border-gray-200 text-gray-700">
+            {{ activeIndex + 1 }} / {{ product.images.length }}
+          </div>
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="p-3 border-t border-gray-200 bg-white">
+          <div class="flex gap-2 overflow-x-auto">
+            @for (img of product.images; track $index) {
+              <button
+                type="button"
+                (click)="goTo($index)"
+                class="shrink-0 rounded-xl border overflow-hidden"
+                [class.border-gray-900]="$index === activeIndex"
+                [class.border-gray-200]="$index !== activeIndex"
+              >
+                <img
+                  [src]="img"
+                  [alt]="product.name + ' thumbnail ' + ($index + 1)"
+                  class="h-14 w-24 object-cover"
+                  loading="lazy"
+                />
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Content -->
+      <div>
+        <div class="text-sm text-gray-500">4 Code Solutions</div>
+        <h1 class="text-3xl font-semibold tracking-tight mt-1">{{ product.name }}</h1>
+        <p class="text-sm text-gray-500 mt-2">{{ product.subtitle }}</p>
+
+        <p class="mt-4 text-gray-700">
+          {{ product.description }}
+        </p>
+
+        <ul class="mt-5 grid gap-2 text-sm text-gray-700">
+          @for (h of product.highlights; track $index) {
+            <li class="flex items-start gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-gray-900"></span>
+              <span>{{ h }}</span>
+            </li>
+          }
+        </ul>
+
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a
+            routerLink="/register"
+            class="inline-flex justify-center px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-black"
+          >
+            Quero testar
+          </a>
+
+          <a
+            routerLink="/portal/dashboard"
+            class="inline-flex justify-center px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100"
+          >
+            Ir para o Console
+          </a>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="mt-6 bg-white border border-gray-200 rounded-2xl p-6">
+      <h1 class="text-xl font-semibold">Produto não encontrado</h1>
+      <p class="mt-2 text-sm text-gray-600">Volte para a lista de produtos e tente novamente.</p>
+    </div>
+  }
+</section>

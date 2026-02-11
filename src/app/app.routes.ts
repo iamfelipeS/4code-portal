@@ -22,6 +22,22 @@ export const routes: Routes = [
                 loadComponent: () =>
                     import('./views/register/register.component').then(m => m.RegisterComponent),
             },
+            {
+                path: 'dashboard',
+                loadComponent: () =>
+                    import('./views/portal/dashboard/dashboard.component').then(m => m.DashboardComponent),
+            },
+            {
+                path: 'produtos',
+                loadComponent: () =>
+                    import('./views/products/products.component').then(m => m.ProductsComponent),
+            },
+            {
+                path: 'produtos/:slug',
+                loadComponent: () =>
+                    import('./views/product-details/product-details.component').then(m => m.ProductDetailsComponent),
+            },
+
         ],
     },
 
@@ -57,37 +73,37 @@ export const routes: Routes = [
 
     // 🧑‍💼 Admin (protegido)
     //{
-        // path: 'admin',
-        // canMatch: [authGuard],
-        // loadComponent: () =>
-        //   import('./layouts/admin/admin-layout/admin-layout.component').then(m => m.AdminLayoutComponent),
-        // children: [
-        //   {
-        //     path: '',
-        //     pathMatch: 'full',
-        //     redirectTo: 'product',
-        //   },
-        //   {
-        //     path: 'product',
-        //     loadComponent: () =>
-        //       import('./views/admin/product/product.component').then(m => m.ProductComponent),
-        //   },
-        //   {
-        //     path: 'category',
-        //     loadComponent: () =>
-        //       import('./views/admin/category/category.component').then(m => m.CategoryComponent),
-        //   },
-        //   {
-        //     path: 'leads',
-        //     loadComponent: () =>
-        //       import('./views/admin/leads/leads.component').then(m => m.LeadsComponent),
-        //   },
-        //   {
-        //     path: 'options',
-        //     loadComponent: () =>
-        //       import('./views/admin/options/options.component').then(m => m.OptionsComponent),
-        //   }
-        // ],
+    // path: 'admin',
+    // canMatch: [authGuard],
+    // loadComponent: () =>
+    //   import('./layouts/admin/admin-layout/admin-layout.component').then(m => m.AdminLayoutComponent),
+    // children: [
+    //   {
+    //     path: '',
+    //     pathMatch: 'full',
+    //     redirectTo: 'product',
+    //   },
+    //   {
+    //     path: 'product',
+    //     loadComponent: () =>
+    //       import('./views/admin/product/product.component').then(m => m.ProductComponent),
+    //   },
+    //   {
+    //     path: 'category',
+    //     loadComponent: () =>
+    //       import('./views/admin/category/category.component').then(m => m.CategoryComponent),
+    //   },
+    //   {
+    //     path: 'leads',
+    //     loadComponent: () =>
+    //       import('./views/admin/leads/leads.component').then(m => m.LeadsComponent),
+    //   },
+    //   {
+    //     path: 'options',
+    //     loadComponent: () =>
+    //       import('./views/admin/options/options.component').then(m => m.OptionsComponent),
+    //   }
+    // ],
     //},
 
     // 👤 Usuário (lazy)
