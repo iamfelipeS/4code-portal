@@ -1,17 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
-  private router = inject(Router);
-
-  goToPortalLayout() {
-    this.router.navigate(['login']);
-  }
 }
