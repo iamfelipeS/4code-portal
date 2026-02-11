@@ -1,0 +1,115 @@
+<div class="min-h-screen bg-gray-50 text-gray-900">
+  <!-- Topbar mobile -->
+  <header class="md:hidden sticky top-0 z-20 bg-white/90 backdrop-blur border-b border-gray-200">
+    <div class="px-4 h-14 flex items-center justify-between">
+      <a routerLink="/" class="flex items-center gap-2 font-semibold">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-white text-sm">
+          4CSS
+        </span>
+        <span>Console</span>
+      </a>
+
+      <button
+        type="button"
+        class="px-3 py-1.5 rounded-lg border border-gray-300 text-sm hover:bg-gray-100"
+        (click)="menuOpen = !menuOpen"
+      >
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <div class="mx-auto max-w-7xl px-0 md:px-4 py-0 md:py-6 grid grid-cols-1 md:grid-cols-[260px_1fr] gap-0 md:gap-6">
+    <!-- Sidebar -->
+    <aside
+      class="bg-white border-r md:border border-gray-200 md:rounded-xl md:shadow-sm
+             md:sticky md:top-6 md:h-[calc(100vh-3rem)]
+             overflow-hidden"
+      [class.hidden]="!menuOpen && isMobile"
+    >
+      <div class="hidden md:flex items-center gap-2 px-5 py-4 border-b border-gray-200">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gray-900 text-white text-sm">
+          4c
+        </span>
+        <div class="leading-tight">
+          <div class="font-semibold">Console</div>
+          <div class="text-xs text-gray-500">Conta e assinaturas</div>
+        </div>
+      </div>
+
+      <nav class="p-3">
+        <a
+          routerLink="/portal/dashboard"
+          routerLinkActive="bg-gray-900 text-white"
+          class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+        >
+          <span class="text-xs">📊</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          routerLink="/portal/products"
+          routerLinkActive="bg-gray-900 text-white"
+          class="mt-1 flex items-center gap-2 px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+        >
+          <span class="text-xs">🧩</span>
+          <span>Produtos</span>
+        </a>
+
+        <a
+          routerLink="/portal/billing"
+          routerLinkActive="bg-gray-900 text-white"
+          class="mt-1 flex items-center gap-2 px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+        >
+          <span class="text-xs">💳</span>
+          <span>Cobrança</span>
+        </a>
+
+        <a
+          routerLink="/portal/account"
+          routerLinkActive="bg-gray-900 text-white"
+          class="mt-1 flex items-center gap-2 px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+        >
+          <span class="text-xs">👤</span>
+          <span>Conta</span>
+        </a>
+
+        <div class="my-3 border-t border-gray-200"></div>
+
+        <a
+          routerLink="/"
+          class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm hover:bg-gray-100 text-gray-700"
+        >
+          <span class="text-xs">↩</span>
+          <span>Voltar ao site</span>
+        </a>
+      </nav>
+
+      <div class="p-4 border-t border-gray-200 text-xs text-gray-500">
+        Versão inicial • sem autenticação ainda
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <section class="px-4 md:px-0 py-6 md:py-0">
+      <!-- header content area -->
+      <div class="hidden md:flex items-center justify-between mb-6">
+        <div>
+          <div class="text-sm text-gray-500">4code Solutions</div>
+          <h1 class="text-xl font-semibold">Console</h1>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a
+            routerLink="/portal/products"
+            class="px-3 py-1.5 rounded-lg border border-gray-300 text-sm hover:bg-gray-100"
+          >
+            Ver produtos
+          </a>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="min-h-screen bg-gray-50 text-gray-900">
+  <header class="sticky top-0 z-20 bg-white/90 backdrop-blur border-b border-gray-200">
+    <div class="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
+      <a routerLink="/" class="flex items-center gap-2 font-semibold tracking-tight">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-white text-sm">
+          4CSS
+        </span>
+        <span>4 Code Solutions</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-700">
+        <a routerLink="/" class="hover:text-gray-900">Home</a>
+        <a routerLink="/portal/products" class="hover:text-gray-900">Soluções</a>
+        <a routerLink="/login" class="hover:text-gray-900">Entrar</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a
+          routerLink="/login"
+          class="hidden sm:inline-flex px-3 py-1.5 rounded-lg border border-gray-300 text-sm hover:bg-gray-100"
+        >
+          Entrar
+        </a>
+
+        <a
+          routerLink="/register"
+          class="inline-flex px-3 py-1.5 rounded-lg bg-gray-900 text-white text-sm hover:bg-black"
+        >
+          Criar conta
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="border-t border-gray-200 bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-sm text-gray-600 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+      <span>© {{ currentYear }} 4 Code Solutions</span>
+      <span class="text-gray-500">Soluções SaaS • Produtos • Assinaturas</span>
+    </div>
+  </footer>
+</div>
