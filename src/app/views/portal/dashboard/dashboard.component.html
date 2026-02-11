@@ -1,1 +1,101 @@
-<p>dashboard works!</p>
+<div class="flex items-start justify-between gap-4">
+  <div>
+    <h2 class="text-2xl font-semibold tracking-tight">Console</h2>
+    <p class="mt-1 text-sm text-gray-600">
+      Bem-vindo(a), <span class="font-medium">{{ orgName }}</span>
+    </p>
+  </div>
+
+  <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm"
+       [ngClass]="statusBadgeClass">
+    <span class="h-2 w-2 rounded-full bg-current opacity-70"></span>
+    <span>{{ statusLabel }}</span>
+  </div>
+</div>
+
+<div class="grid lg:grid-cols-3 gap-4 mt-6">
+  <!-- Card: Produtos -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm lg:col-span-2">
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold">Produtos</h3>
+        <p class="text-sm text-gray-600 mt-1">Acesse e gerencie seus módulos ativos.</p>
+      </div>
+
+      <a routerLink="/portal/products"
+         class="text-sm font-semibold text-gray-900 hover:underline">
+        Ver todos →
+      </a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-3 mt-5">
+      <div class="rounded-xl border border-gray-200 p-4 bg-gray-50">
+        <div class="flex items-center justify-between">
+          <div class="font-semibold">Host Hub</div>
+          <span class="text-xs px-2 py-0.5 rounded-md border bg-white text-gray-700 border-gray-200">
+            Starter
+          </span>
+        </div>
+        <p class="text-sm text-gray-600 mt-2">Reservas e gestão para hospedagens.</p>
+
+        <div class="mt-4 flex gap-2">
+          <button class="px-3 py-1.5 rounded-lg bg-gray-900 text-white text-sm hover:bg-black">
+            Acessar
+          </button>
+          <button class="px-3 py-1.5 rounded-lg border border-gray-300 text-sm hover:bg-gray-100">
+            Gerenciar
+          </button>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-gray-200 p-4 bg-white">
+        <div class="flex items-center justify-between">
+          <div class="font-semibold">Esteira de Produção</div>
+          <span class="text-xs px-2 py-0.5 rounded-md border bg-gray-50 text-gray-600 border-gray-200">
+            Não ativo
+          </span>
+        </div>
+        <p class="text-sm text-gray-600 mt-2">Processos, cards e rastreabilidade.</p>
+
+        <div class="mt-4 flex gap-2">
+          <a routerLink="/portal/products"
+             class="px-3 py-1.5 rounded-lg bg-gray-900 text-white text-sm hover:bg-black inline-flex items-center">
+            Assinar
+          </a>
+          <a routerLink="/portal/products"
+             class="px-3 py-1.5 rounded-lg border border-gray-300 text-sm hover:bg-gray-100 inline-flex items-center">
+            Ver planos
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card: Cobrança -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+    <h3 class="font-semibold">Cobrança</h3>
+    <p class="text-sm text-gray-600 mt-1">Resumo de faturas e pagamentos.</p>
+
+    <div class="mt-4 space-y-3">
+      <div *ngFor="let inv of invoices" class="flex items-center justify-between gap-3">
+        <div>
+          <div class="text-sm font-medium">{{ inv.id }}</div>
+          <div class="text-xs text-gray-500">{{ inv.date }}</div>
+        </div>
+
+        <div class="text-right">
+          <div class="text-sm font-semibold">R$ {{ inv.amount | number:'1.2-2' }}</div>
+          <span class="mt-1 inline-flex text-xs px-2 py-0.5 rounded-md border"
+                [ngClass]="invoiceStatusClass(inv.status)">
+            {{ inv.status }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <a routerLink="/portal/billing"
+       class="mt-5 inline-flex w-full justify-center px-3 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-100">
+      Ver detalhes
+    </a>
+  </div>
+</div>
